@@ -661,23 +661,22 @@
         </div>
       </section>
 
-      <section class="wm-flow-section" id="wm-flow">
+      <!-- <section class="wm-flow-section" id="wm-flow">
         <h3 class="wm-section-title">Optical-Flow Evaluation & Visualization</h3>
-        <!-- <p class="wm-section-subtitle">
+        <p class="wm-section-subtitle">
           Pixel metrics like PSNR/SSIM make Cosmos and Prophet look similarly good in RGB,
           but they barely capture whether the motion actually follows the control. We therefore
           compare <strong>optical flow</strong> against the GT trajectory to directly
           measure motion fidelity.
-        </p> -->
+        </p>
 
-        <!-- <ul class="wm-section-bullets wm-flow-bullets">
+        <ul class="wm-section-bullets wm-flow-bullets">
           <li><strong>Measure motion, not appearance</strong>: evaluate flow fields instead of raw pixels.</li>
           <li><strong>Better correlation with task success</strong>: misaligned grasps and pushes show up clearly in flow.</li>
           <li><strong>Crucial for action-conditioned models</strong>: rewards models that truly follow the same actions.</li>
-        </ul> -->
+        </ul>
 
         <div class="wm-flow-grid">
-          <!-- GT -->
           <div class="wm-flow-col">
             <div class="wm-flow-col-title">Ground truth</div>
             <div class="wm-flow-block">
@@ -700,7 +699,6 @@
             </div>
           </div>
 
-          <!-- Cosmos -->
           <div class="wm-flow-col">
             <div class="wm-flow-col-title">Cosmos</div>
             <div class="wm-flow-block">
@@ -723,7 +721,6 @@
             </div>
           </div>
 
-          <!-- Prophet -->
           <div class="wm-flow-col">
             <div class="wm-flow-col-title">Prophet</div>
             <div class="wm-flow-block">
@@ -753,7 +750,7 @@
           gap (EPE&nbsp;1.48&nbsp;&gt;&nbsp;1.09; cos&nbsp;0.12&nbsp;&lt;&nbsp;0.22). This confirms that
           flow-based metrics are far more discriminative for evaluating action-conditioned world models.
         </p>
-      </section>
+      </section> -->
 
       <section class="rl-section" id="rl">
         <!-- <h2 class="rl-title">VLA + Prophet + FlowScale</h2> -->
