@@ -44,7 +44,6 @@
             <a href="#reward-model">Reward model</a>
             <a href="#rl-results">Policy gains</a>
             <a href="#real-placebowl">Real robot</a>
-            <!-- <a href="#pullouttissue-demo">Real robot · PulloutTissue</a> -->
           </div>
         </div>
 
@@ -80,7 +79,6 @@
     </div>
   </header>
 
-  <!-- 作者信息条，放在 hero 下面 -->
   <section class="hero-meta">
     <div class="hero-meta-inner">
       <div class="hero-authors">
@@ -98,39 +96,6 @@
       </div>
     </div>
   </section>
-
-    <!-- <header class="hero-header">
-    <div class="hero-content">
-    <div class="title-wrapper">
-      <h1 class="project-title">
-        Reinforcing Action Policies by <em>Prophesying</em>
-      </h1>
-    </div>
-      <div class="authors-list">
-        <div class="author-names">
-          Jiahui Zhang<sup>1,3*</sup>, Ze Huang<sup>1,3*</sup>, Chun Gu<sup>1,2,3</sup>, Zipei Ma<sup>1,2</sup>,
-          <a href="https://lzrobots.github.io/" target="_blank">Li Zhang<sup>1,2,3</sup></a>
-        </div>
-      
-        <div class="equal-contribution">* Equal contribution</div>
-      
-        <div class="affiliations">
-          <span class="inst"><sup>1</sup> School of Data Science, Fudan University</span>
-          <span class="inst"><sup>2</sup> Shanghai Innovation Institute</span>
-          <span class="inst"><sup>3</sup> Logos Robotic</span>
-        </div>
-      </div>
-  
-      <div class="button-group">
-        <a href="https://arxiv.org/abs/2503.22976xxx" target="_blank" class="circle-button green">
-          <img src="assets/icons/arxiv.svg" alt="arXiv" class="icon"> arXiv
-        </a>
-        <a href="https://github.com/LogosRoboticGroup/ProphRL.git" target="_blank" class="circle-button green">
-          <img src="assets/icons/github.svg" alt="GitHub" class="icon"> Code
-        </a>
-      </div>
-    </div>
-  </header> -->
 
   <div class="main-content">
      
@@ -185,11 +150,6 @@
           </div>
           <div class="wm-task-comparison", , id="wm-task-comparison">
             <h3 class="wm-section-title">GT Action Rollouts Across Tasks</h3>
-            <!-- <p class="wm-section-subtitle">
-              For each task, all methods start from the same real first frame and follow the
-              <strong>same GT actions</strong>. Prophet better aligns motion with control while
-              keeping contacts and object dynamics plausible.
-            </p> -->
             <p class="wm-section-subtitle">
               For each task, we compare four rollouts under the same control sequence:
             </p>
@@ -200,7 +160,6 @@
             </ul>
             <br>
 
-            <!-- Task 1 -->
             <div class="wm-task-card">
               <div class="wm-task-header">
                 <span class="wm-task-name">Task 1: Put yellow cube</span>
@@ -225,8 +184,6 @@
               </div>
             </div>
 
-
-            <!-- Task 2 -->
             <div class="wm-task-card">
               <div class="wm-task-header">
                 <span class="wm-task-name">Task 2: Move carrot</span>
@@ -251,7 +208,6 @@
               </div>
             </div>
 
-            <!-- Task 3 -->
             <div class="wm-task-card">
               <div class="wm-task-header">
                 <span class="wm-task-name">Task 3: Pick up spoon</span>
@@ -301,7 +257,6 @@
               </div>
             </div>
 
-            <!-- Task 5 -->
             <div class="wm-task-card">
               <div class="wm-task-header">
                 <span class="wm-task-name">Task 5: Close drawer</span>
@@ -326,7 +281,6 @@
               </div>
             </div>
 
-            <!-- Task 6 -->
             <div class="wm-task-card">
               <div class="wm-task-header">
                 <span class="wm-task-name">Task 6: Fold cloths</span>
@@ -361,7 +315,6 @@
           rather than hallucinating success.
         </p>
 
-        <!-- Block 1: LIBERO sim -->
         <div class="wm-perturb-block">
           <div class="wm-perturb-header">
             <span class="wm-perturb-dataset">LIBERO (simulator)</span>
@@ -404,7 +357,6 @@
           </p>
         </div>
 
-        <!-- Block 2: BRIDGE real robot -->
         <div class="wm-perturb-block">
           <div class="wm-perturb-header">
             <span class="wm-perturb-dataset">BRIDGE (real robot, unseen in pretrain)</span>
@@ -414,33 +366,21 @@
           </div>
 
           <div class="wm-perturb-row wm-perturb-row-2">
-            <!-- 上排 3 个 -->
             <div class="wm-perturb-col">
               <video
                 src="assets/videos/perturb/bridge-prophet-fail-0_web.mp4"
                 autoplay loop muted playsinline preload="auto"></video>
             </div>
-            <!-- <div class="wm-perturb-col">
-              <video
-                src="assets/videos/perturb/bridge-prophet-fail-1_web.mp4"
-                autoplay loop muted playsinline preload="auto"></video>
-            </div> -->
             <div class="wm-perturb-col">
               <video
                 src="assets/videos/perturb/bridge-prophet-fail-2_web.mp4"
                 autoplay loop muted playsinline preload="auto"></video>
             </div>
-            <!-- 下排 3 个 -->
             <div class="wm-perturb-col">
               <video
                 src="assets/videos/perturb/bridge-prophet-fail-3_web.mp4"
                 autoplay loop muted playsinline preload="auto"></video>
             </div>
-            <!-- <div class="wm-perturb-col">
-              <video
-                src="assets/videos/perturb/bridge-prophet-fail-4_web.mp4"
-                autoplay loop muted playsinline preload="auto"></video>
-            </div> -->
             <div class="wm-perturb-col">
               <video
                 src="assets/videos/perturb/bridge-prophet-fail-5_web.mp4"
@@ -512,7 +452,6 @@
             </p>
           </div>
 
-          <!-- DROID -->
           <div class="wm-edit-card">
             <div class="wm-edit-header">
               <span class="wm-edit-name">DROID: grasping under gripper edits</span>
@@ -590,7 +529,6 @@
               </button>
             </div>
 
-            <!-- Gripper rotation -->
             <div class="interact-group">
               <div class="interact-group-title">Arm rotation / gripper</div>
               <button
@@ -622,10 +560,6 @@
                 Open
               </button>
 
-            <!-- <div class="interact-hint">
-              Folders are named as <code>move + edit</code>, e.g., <code>back + pitch</code>,
-              containing <code>seg_000.mp4</code> and <code>seg_001.mp4</code>.
-            </div> -->
           </div>
 
             <div class="interact-actions">
@@ -660,7 +594,6 @@
           </div>
 
           <div class="interact-controls">
-            <!-- Step 1 -->
             <div class="interact-group">
               <div class="interact-group-title">First move</div>
               <button class="interact-btn" data-group="step1" data-value="forward">
@@ -671,7 +604,6 @@
               </button>
             </div>
 
-            <!-- Step 2 -->
             <div class="interact-group">
               <div class="interact-group-title">Second move</div>
               <button class="interact-btn" data-group="step2" data-value="forward">
@@ -682,7 +614,6 @@
               </button>
             </div>
 
-            <!-- Step 3 -->
             <div class="interact-group">
               <div class="interact-group-title">Third move</div>
               <button class="interact-btn" data-group="step3" data-value="left">
@@ -693,7 +624,6 @@
               </button>
             </div>
 
-            <!-- Distance -->
             <div class="interact-group">
               <div class="interact-group-title">Distance</div>
               <button class="interact-btn" data-group="dist" data-value="10">
@@ -820,7 +750,6 @@
           rollout–evaluate–update paradigm.
         </p>
 
-        <!-- pipeline figure -->
         <div class="rl-figure-wrapper">
           <img
             class="rl-figure"
@@ -834,7 +763,6 @@
           </p>
         </div>
 
-        <!-- step-by-step explanation -->
         <ol class="rl-steps">
           <li>
             The <strong>VLA policy</strong> takes the instruction and current RGB frame and predicts a <strong>flow-based action chunk</strong>.
@@ -856,7 +784,6 @@
           </li>
         </ol>
 
-        <!-- three keywords -->
         <div class="rl-keywords">
           <span class="rl-tag">Closed-loop rollouts in imagination</span>
           <span class="rl-tag">VLM-based reward models</span>
@@ -1035,7 +962,6 @@
               <strong>multi-task RL results</strong> and  <strong>world-model ablations</strong>.
             </li>          
           </ul>
-          <!-- SimplerEnv / BRIDGE -->
           <div class="rl-table-block">
             <h4 class="rl-table-title">SimplerEnv (WidowX) on BRIDGE</h4>
             <p class="rl-table-caption">
@@ -1055,7 +981,6 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- VLA-Adapter-0.5B -->
                   <tr>
                     <td class="backbone-cell" rowspan="3">VLA–Adapter–0.5B</td>
                     <td>
@@ -1079,7 +1004,6 @@
                     <td class="rl-gain"><strong>(+17.7)</strong></td>
                   </tr>
 
-                  <!-- Pi0.5–3B -->
                   <tr>
                     <td class="backbone-cell" rowspan="3">Pi0.5–3B</td>
                     <!-- <td class="rl-tag rl-tag-base">SFT only</td> -->
@@ -1104,7 +1028,6 @@
                     <td class="rl-gain"><strong>(+12.1)</strong></td>
                   </tr>
 
-                  <!-- OpenVLA–OFT–7B -->
                   <tr>
                     <td class="backbone-cell" rowspan="3">OpenVLA–OFT–7B</td>
                     <td>
@@ -1133,7 +1056,6 @@
             </div>
           </div>
 
-          <!-- Real robot / UR30e -->
           <div class="rl-table-block">
             <h4 class="rl-table-title">Real-robot evaluation on UR30e</h4>
             <p class="rl-table-caption">
@@ -1153,9 +1075,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- VLA-Adapter-0.5B -->
                   <tr>
-                    <!-- 这一格跨 3 行 -->
                     <td class="backbone-cell" rowspan="2">VLA–Adapter–0.5B</td>
                     <td>
                       <span class="rl-tag rl-tag-base">SFT only</span>
@@ -1171,7 +1091,6 @@
                     <td class="rl-gain"><strong>(+24.6)</strong></td>
                   </tr>
 
-                  <!-- Pi0.5–3B -->
                   <tr>
                     <td class="backbone-cell" rowspan="2">Pi0.5–3B</td>
                     <td>
@@ -1188,7 +1107,6 @@
                     <td class="rl-gain"><strong>(+30.0)</strong></td>
                   </tr>
 
-                  <!-- OpenVLA–OFT–7B -->
                   <tr>
                     <td class="backbone-cell" rowspan="2">OpenVLA–OFT–7B</td>
                     <td>
@@ -1212,11 +1130,6 @@
 
         <section class="real-section" id="real-placebowl">
           <h3 class="wm-section-title">Real world PlaceBowl: RL discovers new behavior</h3>
-          <!-- <p class="wm-section-subtitle">
-            Real-world PlaceBowl on UR30e. Demos always grasp the bowl from the left; the SFT policy copies
-            this but often fails. Prophet + FA-GRPO + FlowScale learns a new right-side approach not present
-            in the data and completes the task reliably.
-          </p> -->
 
           <div class="rw-video-row">
             <div class="rw-video-card">
@@ -1266,12 +1179,7 @@
 
         <section class="realworld-section" id="pullouttissue-demo">
           <h3 class="wm-section-title">Real world PulloutTissue</h3>
-          <!-- <p class="wm-section-subtitle">
-            A simple tissue pulling task where we compare the SFT policy and the
-            RL-trained policy on several rollouts.
-          </p> -->
 
-          <!-- 4 demos: 2x SFT, 2x RL (paths to be filled by you) -->
           <div class="realworld-grid">
             <div class="realworld-card">
               <div class="realworld-label">SFT policy – trial 1</div>
@@ -1427,7 +1335,6 @@
         </script>
         <script>
           (function () {
-            // 只管 7-dof 这个 section
             const demo = document.querySelector("#interactive-demo-7dof .interactive-demo");
             if (!demo) return;
 
@@ -1444,8 +1351,8 @@
 
             video.playbackRate = 5;
 
-            let currentSeq = null; // 当前循环的文件列表
-            let currentIdx = 0;    // 当前播放到第几个
+            let currentSeq = null;
+            let currentIdx = 0;
 
             function resetToCover() {
               video.pause();
@@ -1507,7 +1414,6 @@
               });
             });
 
-            // Generate：根据组合选择对应文件夹 merged.mp4
             generateBtn.addEventListener("click", () => {
               if (!selectedMove || !selectedEdit) {
                 alert("Please pick one spatial move and one gripper edit first.");
@@ -1522,12 +1428,10 @@
               playSequence(seq);
             });
 
-            // Stop / Reset：停止循环，回到封面
             stopBtn.addEventListener("click", () => {
               resetToCover();
             });
 
-            // 初始化
             resetToCover();
           })();
         </script>
@@ -1545,7 +1449,6 @@
 
           const state = { step1: null, step2: null, step3: null, dist: null };
           video.playbackRate = 5;
-          // 每个 group 内互斥选中
           buttons.forEach((btn) => {
             btn.addEventListener("click", () => {
               const group = btn.dataset.group;
@@ -1562,7 +1465,6 @@
           function buildFolderName() {
             const { step1, step2, step3, dist } = state;
             if (!step1 || !step2 || !step3 || !dist) return null;
-            // 对应 forward_forward_left_10 等目录
             return `${step1}_${step2}_${step3}_${dist}`;
           }
 
