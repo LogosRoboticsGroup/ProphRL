@@ -18,11 +18,10 @@
 
   <body>
   <header class="site-header">
-    <div class="site-nav">
-      <a href="#top" class="nav-logo">PorphRL</a>
+    <!-- <div class="site-nav">
+      <a href="#top" class="nav-logo">ProphRL</a>
 
       <nav class="nav-links">
-        <!-- World model -->
         <div class="nav-item has-submenu">
           <a href="#prophet" class="nav-parent">Porphet</a>
           <div class="nav-submenu">
@@ -35,7 +34,6 @@
           </div>
         </div>
 
-        <!-- RL algorithm -->
         <div class="nav-item has-submenu">
           <a href="#rl" class="nav-parent">FlowScale</a>
           <div class="nav-submenu">
@@ -49,38 +47,43 @@
 
         <a href="#citation" class="nav-item nav-plain">Cite</a>
       </nav>
-    </div>
+    </div> -->
   </header>
   <!-- Hero -->
   <header class="hero-header">
+    <!-- 背景（渐变 / 视频）保持你原来的写法 -->
     <div class="hero-background"></div>
+    <!-- 或者是 <video class="hero-video">... -->
 
+    <!-- 右上角 arXiv / Code -->
+    <div class="hero-top-links">
+      <a href="https://arxiv.org/abs/2503.22976xxx"
+         target="_blank"
+         class="hero-top-link">
+        arXiv
+      </a>
+      <a href="https://github.com/LogosRoboticsGroup/ProphRL.git"
+         target="_blank"
+         class="hero-top-link">
+        Code
+      </a>
+    </div>
+
+    <!-- 中间大标题 -->
     <div class="hero-content">
       <h1 class="hero-main-title">ProphRL</h1>
-
       <p class="hero-subtitle">
-        Reinforcing Action Policies by <em>Prophesying</em>
+        Reinforcing Action Policies by Prophesying
       </p>
-
-      <div class="hero-links">
-        <a href="https://github.com/LogosRoboticsGroup/ProphRL.git"
-          target="_blank"
-          class="hero-link">
-          <img src="assets/icons/arxiv.svg" alt="arXiv" class="hero-link-icon">
-          <span>arXiv</span>
-        </a>
-        <a href="https://github.com/LogosRoboticsGroup/ProphRL.git"
-          target="_blank"
-          class="hero-link">
-          <img src="assets/icons/github.svg" alt="GitHub" class="hero-link-icon">
-          <span>Code</span>
-        </a>
-      </div>
     </div>
   </header>
 
   <section class="hero-meta">
     <div class="hero-meta-inner">
+      <h2 class="hero-paper-title">
+        Reinforcing Action Policies by Prophesying
+      </h2>
+
       <div class="hero-authors">
         Jiahui Zhang<sup>1,3*</sup>, Ze Huang<sup>1,3*</sup>,
         Chun Gu<sup>1,2,3</sup>, Zipei Ma<sup>1,2</sup>,
@@ -88,11 +91,15 @@
           Li Zhang<sup>1,2,3</sup>
         </a>
       </div>
-      <div class="hero-equal">* Equal contribution</div>
-      <div class="hero-affiliations">
-        <span><sup>1</sup> School of Data Science, Fudan University</span>
-        <span><sup>2</sup> Shanghai Innovation Institute</span>
+
+      <div class="hero-affiliations-line">
+        <span><sup>1</sup> School of Data Science, Fudan University</span>,
+        <span><sup>2</sup> Shanghai Innovation Institute</span>,
         <span><sup>3</sup> Logos Robotics</span>
+      </div>
+
+      <div class="hero-equal">
+        * Equal contribution
       </div>
     </div>
   </section>
@@ -100,36 +107,44 @@
   <div class="main-content">
      
       <section class="teaser-section", id="overview">
-        <h2 class="teaser-title">Online VLA RL in a World Model</h2>
+        <!-- <h2 class="teaser-title">Online VLA RL in a World Model</h2> -->
         <img src="assets/images/teaser.png" alt="Teaser Figure" class="teaser-image">
-        <p class="teaser-caption">
+        <!-- <p class="teaser-caption">
           <em>
             Prophet: an action-conditioned world model for robot manipulation.
             <br>
             FlowScale: RL to reliably improve VLA policies in imagination.          
           </em>
-        </p>
+        </p> -->
       </section>
       <section class="summary-section", id="paper-summary">
         <h2 class="summary-title">📄 Paper Summary</h2>
         <p class="summary-text">
-          Current VLA policies are mostly trained by imitation, which makes them brittle under distribution shift and hard to improve safely with RL because real-robot interaction is expensive and conventional simulators are limited.
+          <!-- Current VLA policies are mostly trained by imitation, which makes them brittle under distribution shift and hard to improve safely with RL because real-robot interaction is expensive and conventional simulators are limited.
         </p>
         <p class="summary-text">
           To address this, we introduce <strong>Prophet</strong>, 
           an action-to-video world model pretrained on large-scale, heterogeneous robot trajectories and few-shot adapted to new robots, objects, and scenes, turning it into a rollout-ready simulator for VLA post-training. 
           On top of Prophet, we propose <strong>FlowScale</strong>, a RL algorithm with intrinsic stepwise reweighting tailored to flow-based action heads, enabling stable and data-efficient online RL inside the world model. 
-          Experiments show 5–17% absolute success gains on public benchmarks and 24–30% on real-robot tasks across diverse VLA backbones.
+          Experiments show 5–17% absolute success gains on public benchmarks and 24–30% on real-robot tasks across diverse VLA backbones. -->
+          Vision–Language–Action (VLA) policies excel in aligning language, perception, and robot control.
+          However, most VLAs are trained purely by imitation, which overfits to demonstrations, and is brittle under distribution shift. 
+          Reinforcement learning (RL) directly optimizes task reward and thus addresses this misalignment, but real-robot interaction is expensive and conventional simulators are hard to engineer and transfer. 
+          We address both data efficiency and optimization stability in VLA post-training via a learned world model and an RL procedure tailored to flow-based action heads.
+          Specifically, we introduce Prophet, a unified action-to-video robot actuation pretrained across large-scale, heterogeneous robot data to learn reusable action–outcome dynamics and then few-shot adapted to new robots, objects, and environments, yielding a rollout-ready simulator.
+          Upon Prophet, we reinforce action policies with Flow-action-GRPO (FA-GRPO), which adapts Flow-GRPO to operate on VLA actions, and with FlowScale, a stepwise reweighting that rescales per-step gradients in the flow head. 
+          Together, FA-GRPO with FlowScale provide a practical, data- and compute-efficient path to VLA post-training. 
+          Experiments show 5-17% success gains on public benchmarks and 24-30% on real robots across VLA variants.
         </p>
       </section>
       <section class="prophet-section", id="prophet">
-        <h2 class="prophet-title">Prophet World Model</h2>
-        <p class="prophet-intro">
+        <!-- <h2 class="prophet-title">Prophet World Model</h2> -->
+        <!-- <p class="prophet-intro">
           <strong>Prophet</strong> is an action-conditioned video world model trained to predict how the scene
           evolves under robot control. We pretrain it on large-scale, heterogeneous robot trajectories so that it
           learns reusable action–outcome dynamics, and then lightly fine-tune it for new tasks and environments.
-        </p>
-        <div class="prophet-stats">
+        </p> -->
+        <!-- <div class="prophet-stats">
             <div class="stat-item">
               <span class="stat-label">Pretraining data</span>
               <span class="stat-value">31M+ trajectory clips</span>
@@ -147,18 +162,18 @@
                 current + history RGB with future action chunks in, future RGB frames out
               </span>
             </div>
-          </div>
+        </div> -->
           <div class="wm-task-comparison", , id="wm-task-comparison">
             <h3 class="wm-section-title">GT Action Rollouts Across Tasks</h3>
-            <p class="wm-section-subtitle">
+            <!-- <p class="wm-section-subtitle">
               For each task, we compare four rollouts under the same control sequence:
-            </p>
-            <ul class="wm-section-bullets">
+            </p> -->
+            <!-- <ul class="wm-section-bullets">
               <li>All methods start from the <strong>same real first frame</strong> and follow the <strong>same GT actions</strong>.</li>
               <li><strong>Prophet</strong> is pretrained without using any BRIDGE trajectories; these tasks are held out.</li>
               <li>Under the same actions, Prophet better aligns motion with control while keeping contacts and object dynamics plausible.</li>
-            </ul>
-            <br>
+            </ul> -->
+            <!-- <br> -->
 
             <div class="wm-task-card">
               <div class="wm-task-header">
@@ -307,7 +322,7 @@
 
       </section>
 
-      <section class="wm-perturb-section" id="wm-perturb">
+      <!-- <section class="wm-perturb-section" id="wm-perturb">
         <h3 class="wm-section-title">Action-Conditioned Rollouts under Perturbed Actions</h3>
         <p class="wm-section-subtitle">
           We feed Prophet perturbed action sequences and inspect the resulting rollouts.
@@ -325,25 +340,25 @@
 
           <div class="wm-perturb-row wm-perturb-row-4">
             <div class="wm-perturb-col">
-              <div class="wm-perturb-label">Follows expert actions</div>
+              <div class="wm-perturb-label">Expert actions</div>
               <video
                 src="assets/videos/perturb/libero_long_web.mp4"
                 autoplay loop muted playsinline preload="auto"></video>
             </div>
             <div class="wm-perturb-col">
-              <div class="wm-perturb-label">Follows perturbed actions #1</div>
+              <div class="wm-perturb-label">Perturbed actions #1</div>
               <video
                 src="assets/videos/perturb/libero_fail_2_web.mp4"
                 autoplay loop muted playsinline preload="auto"></video>
             </div>
             <div class="wm-perturb-col">
-              <div class="wm-perturb-label">Follows perturbed actions #2</div>
+              <div class="wm-perturb-label">Perturbed actions #2</div>
               <video
                 src="assets/videos/perturb/libero_fail_1_web.mp4"
                 autoplay loop muted playsinline preload="auto"></video>
             </div>
             <div class="wm-perturb-col">
-              <div class="wm-perturb-label">Follows perturbed actions #3</div>
+              <div class="wm-perturb-label">Perturbed actions #3</div>
               <video
                 src="assets/videos/perturb/libero_fail_0_web.mp4"
                 autoplay loop muted playsinline preload="auto"></video>
@@ -392,15 +407,183 @@
             On the held out BRIDGE dataset, perturbed actions lead to plausible but failing rollouts (missed grasps, overshoots, unstable stacks), showing that Prophet generalizes to new setups while still faithfully reflecting the perturbed control.
           </p>
         </div>
+      </section> -->
+
+      <!-- <section class="interactive-section" id="interactive-demo-7dof">
+        <h3 class="wm-section-title">Interactive Demo: 2-step 7-DoF control</h3>
+        <ol class="interactive-bullets">
+          <li>Pick one <strong>Arm translation</strong>.</li>
+          <li>Pick one <strong>Arm rotation / gripper</strong>.</li>
+          <li>
+            Click <strong>Generate rollout</strong> to play the rollout.
+          </li>
+          <li>
+            Click <strong>Reset</strong> to return to the initial frame.
+          </li>
+        </ol>
+
+        <div
+          class="interactive-demo"
+          data-base-path="assets/videos/interact_demo/demo-7-dof-control"
+          data-cover-frame="assets/videos/interact_demo/demo-7-dof-control/cover_frame.png"
+        >
+          <div class="interact-video-wrapper">
+            <img class="interact-cover" src="assets/videos/interact_demo/demo-7-dof-control/cover_frame.png" alt="Initial frame" />
+            <video class="interact-video" muted playsinline preload="auto"></video>
+          </div>
+
+
+          <div class="interact-controls">
+            <div class="interact-group">
+              <div class="interact-group-title">Arm translation</div>
+              <button
+                class="interact-btn"
+                data-group="move"
+                data-value="back"
+              >
+                Backwards
+              </button>
+              <button
+                class="interact-btn"
+                data-group="move"
+                data-value="left-right"
+              >
+                Towards camera
+              </button>
+              <button
+                class="interact-btn"
+                data-group="move"
+                data-value="up"
+              >
+                Upwards
+              </button>
+            </div>
+
+            <div class="interact-group">
+              <div class="interact-group-title">Arm rotation / gripper</div>
+              <button
+                class="interact-btn"
+                data-group="grip"
+                data-value="pitch"
+              >
+                Pitch
+              </button>
+              <button
+                class="interact-btn"
+                data-group="grip"
+                data-value="roll"
+              >
+                Roll
+              </button>
+              <button
+                class="interact-btn"
+                data-group="grip"
+                data-value="yaw"
+              >
+                Yaw
+              </button>
+              <button
+                class="interact-btn"
+                data-group="grip"
+                data-value="loose"
+              >
+                Open
+              </button>
+
+          </div>
+
+            <div class="interact-actions">
+              <button class="interact-main-btn" data-action="generate">Generate rollout</button>
+              <button class="interact-secondary-btn" data-action="stop">Reset</button>
+            </div>
+        </div>
+      </section> -->
+      <section class="interactive-section" id="interactive-demo-cm">
+        <h3 class="wm-section-title">Interactive Demo: 3-step precise control</h3>
+        <!-- <ol class="interactive-bullets">
+          <li>Pick the <strong>First move</strong> (forward / right).</li>
+          <li>Pick the <strong>Second move</strong> (forward / stay).</li>
+          <li>Pick the <strong>Third move</strong> (left / right).</li>
+          <li>Pick the <strong>Distance</strong> (10 cm / 20 cm).</li>
+          <li>Click <strong>Generate rollout</strong> to play the rollout.</li>
+          <li>Click <strong>Reset</strong> to return to the initial frame.</li>
+        </ol> -->
+
+        <div
+          class="interactive-demo"
+          data-base-path="assets/videos/interact_demo/demo-cm-control"
+          data-cover-frame="assets/videos/interact_demo/demo-cm-control/cover_frame.png"
+        >
+          <div class="interact-video-wrapper">
+            <img
+              class="interact-cover"
+              src="assets/videos/interact_demo/demo-cm-control/cover_frame.png"
+              alt="Initial frame"
+            />
+            <video class="interact-video" muted playsinline preload="auto"></video>
+          </div>
+
+          <div class="interact-controls">
+            <div class="interact-group">
+              <div class="interact-group-title">First move</div>
+              <button class="interact-btn" data-group="step1" data-value="forward">
+                Forward
+              </button>
+              <button class="interact-btn" data-group="step1" data-value="right">
+                Right
+              </button>
+            </div>
+
+            <div class="interact-group">
+              <div class="interact-group-title">Second move</div>
+              <button class="interact-btn" data-group="step2" data-value="forward">
+                Forward
+              </button>
+              <button class="interact-btn" data-group="step2" data-value="stay">
+                Stay
+              </button>
+            </div>
+
+            <div class="interact-group">
+              <div class="interact-group-title">Third move</div>
+              <button class="interact-btn" data-group="step3" data-value="left">
+                Left
+              </button>
+              <button class="interact-btn" data-group="step3" data-value="right">
+                Right
+              </button>
+            </div>
+
+            <div class="interact-group">
+              <div class="interact-group-title">Distance</div>
+              <button class="interact-btn" data-group="dist" data-value="10">
+                10&nbsp;cm
+              </button>
+              <button class="interact-btn" data-group="dist" data-value="20">
+                20&nbsp;cm
+              </button>
+              
+            </div>
+
+            <div class="interact-actions">
+              <button class="interact-main-btn" data-action="generate">
+                Generate rollout
+              </button>
+              <button class="interact-secondary-btn" data-action="stop">
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="wm-edit-section" id="wm-edit">
         <h3 class="wm-section-title">Action Editing with Prophet</h3>
-        <p class="wm-section-subtitle">
+        <!-- <p class="wm-section-subtitle">
           All clips below are rollouts generated by <strong>Prophet</strong>. For each robot,
           we start from the same first frame and compare rollouts under GT actions
           and hand-edited actions.
-        </p>
+        </p> -->
 
         <div class="wm-edit-grid">
 
@@ -478,191 +661,20 @@
         </div>
       </section>
 
-      <section class="interactive-section" id="interactive-demo-7dof">
-        <h3 class="wm-section-title">Interactive Demo: 2-step 7-DoF control</h3>
-        <ol class="interactive-bullets">
-          <li>Pick one <strong>Arm translation</strong>.</li>
-          <li>Pick one <strong>Arm rotation / gripper</strong>.</li>
-          <li>
-            Click <strong>Generate rollout</strong> to play the rollout.
-          </li>
-          <li>
-            Click <strong>Reset</strong> to return to the initial frame.
-          </li>
-        </ol>
-
-        <div
-          class="interactive-demo"
-          data-base-path="assets/videos/interact_demo/demo-7-dof-control"
-          data-cover-frame="assets/videos/interact_demo/demo-7-dof-control/cover_frame.png"
-        >
-          <div class="interact-video-wrapper">
-            <img class="interact-cover" src="assets/videos/interact_demo/demo-7-dof-control/cover_frame.png" alt="Initial frame" />
-            <video class="interact-video" muted playsinline preload="auto"></video>
-          </div>
-
-
-          <div class="interact-controls">
-            <!-- Arm translation -->
-            <div class="interact-group">
-              <div class="interact-group-title">Arm translation</div>
-              <button
-                class="interact-btn"
-                data-group="move"
-                data-value="back"
-              >
-                Backwards
-              </button>
-              <button
-                class="interact-btn"
-                data-group="move"
-                data-value="left-right"
-              >
-                Towards camera
-              </button>
-              <button
-                class="interact-btn"
-                data-group="move"
-                data-value="up"
-              >
-                Upwards
-              </button>
-            </div>
-
-            <div class="interact-group">
-              <div class="interact-group-title">Arm rotation / gripper</div>
-              <button
-                class="interact-btn"
-                data-group="grip"
-                data-value="pitch"
-              >
-                Pitch
-              </button>
-              <button
-                class="interact-btn"
-                data-group="grip"
-                data-value="roll"
-              >
-                Roll
-              </button>
-              <button
-                class="interact-btn"
-                data-group="grip"
-                data-value="yaw"
-              >
-                Yaw
-              </button>
-              <button
-                class="interact-btn"
-                data-group="grip"
-                data-value="loose"
-              >
-                Open
-              </button>
-
-          </div>
-
-            <div class="interact-actions">
-              <button class="interact-main-btn" data-action="generate">Generate rollout</button>
-              <button class="interact-secondary-btn" data-action="stop">Reset</button>
-            </div>
-        </div>
-      </section>
-      <section class="interactive-section" id="interactive-demo-cm">
-        <h3 class="wm-section-title">Interactive Demo: 3-step precise control</h3>
-        <ol class="interactive-bullets">
-          <li>Pick the <strong>First move</strong> (forward / right).</li>
-          <li>Pick the <strong>Second move</strong> (forward / stay).</li>
-          <li>Pick the <strong>Third move</strong> (left / right).</li>
-          <li>Pick the <strong>Distance</strong> (10 cm / 20 cm).</li>
-          <li>Click <strong>Generate rollout</strong> to play the rollout.</li>
-          <li>Click <strong>Reset</strong> to return to the initial frame.</li>
-        </ol>
-
-        <div
-          class="interactive-demo"
-          data-base-path="assets/videos/interact_demo/demo-cm-control"
-          data-cover-frame="assets/videos/interact_demo/demo-cm-control/cover_frame.png"
-        >
-          <div class="interact-video-wrapper">
-            <img
-              class="interact-cover"
-              src="assets/videos/interact_demo/demo-cm-control/cover_frame.png"
-              alt="Initial frame"
-            />
-            <video class="interact-video" muted playsinline preload="auto"></video>
-          </div>
-
-          <div class="interact-controls">
-            <div class="interact-group">
-              <div class="interact-group-title">First move</div>
-              <button class="interact-btn" data-group="step1" data-value="forward">
-                Forward
-              </button>
-              <button class="interact-btn" data-group="step1" data-value="right">
-                Right
-              </button>
-            </div>
-
-            <div class="interact-group">
-              <div class="interact-group-title">Second move</div>
-              <button class="interact-btn" data-group="step2" data-value="forward">
-                Forward
-              </button>
-              <button class="interact-btn" data-group="step2" data-value="stay">
-                Stay
-              </button>
-            </div>
-
-            <div class="interact-group">
-              <div class="interact-group-title">Third move</div>
-              <button class="interact-btn" data-group="step3" data-value="left">
-                Left
-              </button>
-              <button class="interact-btn" data-group="step3" data-value="right">
-                Right
-              </button>
-            </div>
-
-            <div class="interact-group">
-              <div class="interact-group-title">Distance</div>
-              <button class="interact-btn" data-group="dist" data-value="10">
-                10&nbsp;cm
-              </button>
-              <button class="interact-btn" data-group="dist" data-value="20">
-                20&nbsp;cm
-              </button>
-              
-            </div>
-
-            <div class="interact-actions">
-              <button class="interact-main-btn" data-action="generate">
-                Generate rollout
-              </button>
-              <button class="interact-secondary-btn" data-action="stop">
-                Reset
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
       <section class="wm-flow-section" id="wm-flow">
         <h3 class="wm-section-title">Optical-Flow Evaluation & Visualization</h3>
-        <p class="wm-section-subtitle">
+        <!-- <p class="wm-section-subtitle">
           Pixel metrics like PSNR/SSIM make Cosmos and Prophet look similarly good in RGB,
           but they barely capture whether the motion actually follows the control. We therefore
           compare <strong>optical flow</strong> against the GT trajectory to directly
           measure motion fidelity.
-        </p>
+        </p> -->
 
-        <ul class="wm-section-bullets wm-flow-bullets">
+        <!-- <ul class="wm-section-bullets wm-flow-bullets">
           <li><strong>Measure motion, not appearance</strong>: evaluate flow fields instead of raw pixels.</li>
           <li><strong>Better correlation with task success</strong>: misaligned grasps and pushes show up clearly in flow.</li>
           <li><strong>Crucial for action-conditioned models</strong>: rewards models that truly follow the same actions.</li>
-        </ul>
+        </ul> -->
 
         <div class="wm-flow-grid">
           <!-- GT -->
@@ -744,12 +756,12 @@
       </section>
 
       <section class="rl-section" id="rl">
-        <h2 class="rl-title">VLA + Prophet + FlowScale</h2>
-        <p class="rl-intro">
+        <!-- <h2 class="rl-title">VLA + Prophet + FlowScale</h2> -->
+        <!-- <p class="rl-intro">
           We train VLA policies entirely inside the Prophet world model using a closed-loop
           rollout–evaluate–update paradigm.
-        </p>
-
+        </p> -->
+<!-- 
         <div class="rl-figure-wrapper">
           <img
             class="rl-figure"
@@ -802,7 +814,6 @@
             + \beta\,\mathrm{KL}\big(\pi_\theta \Vert \pi_{\text{ref}}\big).$$
           </p>
 
-          <!-- <p><strong>Per-step noise scale</strong></p> -->
            <div class="rl-formula-subtitle">Per-step noise scale</div>
           <p>
             $$\mathrm{std}_{s,k} \propto
@@ -811,7 +822,6 @@
               \sigma^2_{s,k} := \mathrm{std}^2_{s,k}.$$
           </p>
 
-          <!-- <p><strong>Weight construction</strong></p> -->
           <div class="rl-formula-subtitle">Weight construction</div>
           <p>
             $$\tilde w_{s,k} = (\sigma^2_{s,k} + \varepsilon)^p,\qquad
@@ -829,7 +839,6 @@
             clipping. This yields more stable gradients for flow-based action heads while keeping
             a KL trust-region constraint to the reference policy.
           </div>
-        <!-- Reward model section -->
         <div class="rm-section" id="reward-model">
           <h3 class="rm-title">Reward model: video–level VLM judge</h3>
           <p class="rm-intro">
@@ -844,7 +853,6 @@
           </ul>
 
         <div class="rm-cards">
-          <!-- Prompt card -->
           <div class="rm-card">
             <div class="rm-card-tag">Real-world prompt</div>
             <div class="rm-card-title">PulloutTissueScene</div>
@@ -892,7 +900,6 @@
             </div>
           </div>
 
-          <!-- Response card -->
           <div class="rm-card">
             <div class="rm-card-tag">Example RM response</div>
             <div class="rm-card-title">PulloutTissueScene</div>
@@ -943,10 +950,129 @@
           </div>
         </div>
 
-        </div>
+        </div> -->
 
+        <section class="real-section" id="real-placebowl">
+          <h3 class="wm-section-title">Real world PlaceBowl: RL discovers new behavior</h3>
 
+          <div class="rw-video-row">
+            <div class="rw-video-card">
+              <div class="rw-video-label">Train demonstrations (dataset)</div>
+              <video
+                src="assets/videos/rl_behavior/episode_000005_f551_604_ppt.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+              ></video>
+            </div>
 
+            <div class="rw-video-card">
+              <div class="rw-video-label">SFT policy (Pi0.5)</div>
+              <video
+                src="assets/videos/rl_behavior/episode_000019_ppt.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+              ></video>
+            </div>
+
+            <div class="rw-video-card">
+              <div class="rw-video-label">Prophet + FA-GRPO + FlowScale</div>
+              <video
+                src="assets/videos/rl_behavior/episode_000015_ppt.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+              ></video>
+            </div>
+          </div>
+          <ul class="realworld-bullets">
+            <li>Training demonstrations for <strong>PlaceBowl</strong> only show <strong>left-side grasps</strong>.</li>
+            <li>The SFT policy occasionally samples a <strong>right-side approach</strong>, but these rare trajectories are unstable and unreliable.</li>
+            <li>Whenever a right-side attempt succeeds, the <strong>reward model</strong> assigns a positive signal.</li>
+            <li>RL with <strong>FA-GRPO + FlowScale</strong> amplifies this weak mode, turning the right-side strategy into a <strong>consistent and reliable behavior</strong>.</li>
+            <li>This highlights a key difference: <strong>SFT imitates the dataset</strong>, whereas <strong>RL can discover and reinforce behaviors</strong> that are only weakly expressed in demonstrations.</li>
+          </ul>
+        </section>
+
+        <section class="realworld-section" id="pullouttissue-demo">
+          <h3 class="wm-section-title">Real world PulloutTissue</h3>
+
+          <div class="realworld-grid">
+            <div class="realworld-card">
+              <div class="realworld-label">SFT policy – trial 1</div>
+              <video
+                class="slow-video"
+                src="assets/videos/rl_tissue/episode_000034.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+              ></video>
+            </div>
+
+            <div class="realworld-card">
+              <div class="realworld-label">SFT policy – trial 2</div>
+              <video
+                class="slow-video"
+                src="assets/videos/rl_tissue/episode_000035.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+              ></video>
+            </div>
+
+            <div class="realworld-card">
+              <div class="realworld-label">Prophet + FA-GRPO + FlowScale – trial 1</div>
+              <video
+                class="slow-video"
+                src="assets/videos/rl_tissue/episode_000044.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+              ></video>
+            </div>
+
+            <div class="realworld-card">
+              <div class="realworld-label">Prophet + FA-GRPO + FlowScale – trial 2</div>
+              <video
+                class="slow-video"
+                src="assets/videos/rl_tissue/episode_000045.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+              ></video>
+            </div>
+          </div>
+
+          <!-- <ul class="realworld-bullets">
+            <li>
+              The SFT policy roughly follows the demonstrations but can drift sideways,
+              sometimes making weak contact with the exposed tissue edge and failing the pull.
+            </li>
+            <li>
+              After RL in Prophet, the approach becomes more stable: the gripper stays
+              better aligned with the tissue edge and completes the extraction more reliably.
+            </li>
+            <li>
+              This example illustrates how RL can refine approach stability and cleanup
+              small but important errors, even on relatively simple real world tasks.
+            </li>
+          </ul> -->
+        </section>
 
         <section class="rl-results-section" id="rl-results">
           <h3 class="wm-section-title">RL post-training results</h3>
@@ -1006,7 +1132,6 @@
 
                   <tr>
                     <td class="backbone-cell" rowspan="3">Pi0.5–3B</td>
-                    <!-- <td class="rl-tag rl-tag-base">SFT only</td> -->
                     <td>
                       <span class="rl-tag rl-tag-base">SFT only</span>
                     </td>
@@ -1127,130 +1252,6 @@
             </div>
           </div>
         </section>
-
-        <section class="real-section" id="real-placebowl">
-          <h3 class="wm-section-title">Real world PlaceBowl: RL discovers new behavior</h3>
-
-          <div class="rw-video-row">
-            <div class="rw-video-card">
-              <div class="rw-video-label">Train demonstrations (dataset)</div>
-              <video
-                src="assets/videos/rl_behavior/episode_000005_f551_604_ppt.mp4"
-                autoplay
-                loop
-                muted
-                playsinline
-                preload="auto"
-              ></video>
-            </div>
-
-            <div class="rw-video-card">
-              <div class="rw-video-label">SFT policy (Pi0.5)</div>
-              <video
-                src="assets/videos/rl_behavior/episode_000019_ppt.mp4"
-                autoplay
-                loop
-                muted
-                playsinline
-                preload="auto"
-              ></video>
-            </div>
-
-            <div class="rw-video-card">
-              <div class="rw-video-label">Prophet + FA-GRPO + FlowScale</div>
-              <video
-                src="assets/videos/rl_behavior/episode_000015_ppt.mp4"
-                autoplay
-                loop
-                muted
-                playsinline
-                preload="auto"
-              ></video>
-            </div>
-          </div>
-          <ul class="realworld-bullets">
-            <li>Training demonstrations for <strong>PlaceBowl</strong> only show <strong>left-side grasps</strong>.</li>
-            <li>The SFT policy occasionally samples a <strong>right-side approach</strong>, but these rare trajectories are unstable and unreliable.</li>
-            <li>Whenever a right-side attempt succeeds, the <strong>reward model</strong> assigns a positive signal.</li>
-            <li>RL with <strong>FA-GRPO + FlowScale</strong> amplifies this weak mode, turning the right-side strategy into a <strong>consistent and reliable behavior</strong>.</li>
-            <li>This highlights a key difference: <strong>SFT imitates the dataset</strong>, whereas <strong>RL can discover and reinforce behaviors</strong> that are only weakly expressed in demonstrations.</li>
-          </ul>
-        </section>
-
-        <section class="realworld-section" id="pullouttissue-demo">
-          <h3 class="wm-section-title">Real world PulloutTissue</h3>
-
-          <div class="realworld-grid">
-            <div class="realworld-card">
-              <div class="realworld-label">SFT policy – trial 1</div>
-              <video
-                class="slow-video"
-                src="assets/videos/rl_tissue/episode_000034.mp4"
-                autoplay
-                loop
-                muted
-                playsinline
-                preload="auto"
-              ></video>
-            </div>
-
-            <div class="realworld-card">
-              <div class="realworld-label">SFT policy – trial 2</div>
-              <video
-                class="slow-video"
-                src="assets/videos/rl_tissue/episode_000035.mp4"
-                autoplay
-                loop
-                muted
-                playsinline
-                preload="auto"
-              ></video>
-            </div>
-
-            <div class="realworld-card">
-              <div class="realworld-label">Prophet + FA-GRPO + FlowScale – trial 1</div>
-              <video
-                class="slow-video"
-                src="assets/videos/rl_tissue/episode_000044.mp4"
-                autoplay
-                loop
-                muted
-                playsinline
-                preload="auto"
-              ></video>
-            </div>
-
-            <div class="realworld-card">
-              <div class="realworld-label">Prophet + FA-GRPO + FlowScale – trial 2</div>
-              <video
-                class="slow-video"
-                src="assets/videos/rl_tissue/episode_000045.mp4"
-                autoplay
-                loop
-                muted
-                playsinline
-                preload="auto"
-              ></video>
-            </div>
-          </div>
-
-          <ul class="realworld-bullets">
-            <li>
-              The SFT policy roughly follows the demonstrations but can drift sideways,
-              sometimes making weak contact with the exposed tissue edge and failing the pull.
-            </li>
-            <li>
-              After RL in Prophet, the approach becomes more stable: the gripper stays
-              better aligned with the tissue edge and completes the extraction more reliably.
-            </li>
-            <li>
-              This example illustrates how RL can refine approach stability and cleanup
-              small but important errors, even on relatively simple real world tasks.
-            </li>
-          </ul>
-        </section>
-
-
 
       <section class="citation-section", id="citation">
         <h2 class="section-title">Bibtex</h2>
