@@ -120,21 +120,15 @@
       <section class="summary-section", id="paper-summary">
         <h2 class="summary-title">📄 Paper Summary</h2>
         <p class="summary-text">
-          <!-- Current VLA policies are mostly trained by imitation, which makes them brittle under distribution shift and hard to improve safely with RL because real-robot interaction is expensive and conventional simulators are limited.
-        </p>
-        <p class="summary-text">
-          To address this, we introduce <strong>Prophet</strong>, 
-          an action-to-video world model pretrained on large-scale, heterogeneous robot trajectories and few-shot adapted to new robots, objects, and scenes, turning it into a rollout-ready simulator for VLA post-training. 
-          On top of Prophet, we propose <strong>FlowScale</strong>, a RL algorithm with intrinsic stepwise reweighting tailored to flow-based action heads, enabling stable and data-efficient online RL inside the world model. 
-          Experiments show 5–17% absolute success gains on public benchmarks and 24–30% on real-robot tasks across diverse VLA backbones. -->
           Vision–Language–Action (VLA) policies excel in aligning language, perception, and robot control.
           However, most VLAs are trained purely by imitation, which overfits to demonstrations, and is brittle under distribution shift. 
           Reinforcement learning (RL) directly optimizes task reward and thus addresses this misalignment, but real-robot interaction is expensive and conventional simulators are hard to engineer and transfer. 
           We address both data efficiency and optimization stability in VLA post-training via a learned world model and an RL procedure tailored to flow-based action heads.
-          Specifically, we introduce Prophet, a unified action-to-video robot actuation pretrained across large-scale, heterogeneous robot data to learn reusable action–outcome dynamics and then few-shot adapted to new robots, objects, and environments, yielding a rollout-ready simulator.
+          Specifically, we introduce Prophet, a unified action-to-video robot actuation pretrained across large-scale, heterogeneous robot data to learn reusable action–outcome dynamics.
+          It is able to few-shot adapt to new robots, objects, and environments, yielding a rollout-ready simulator.
           Upon Prophet, we reinforce action policies with Flow-action-GRPO (FA-GRPO), which adapts Flow-GRPO to operate on VLA actions, and with FlowScale, a stepwise reweighting that rescales per-step gradients in the flow head. 
-          Together, FA-GRPO with FlowScale provide a practical, data- and compute-efficient path to VLA post-training. 
-          Experiments show 5-17% success gains on public benchmarks and 24-30% on real robots across VLA variants.
+          Together, Prophet, FA-GRPO, and FlowScale constitute <strong>PorphRL</strong>, a practical, data- and compute-efficient path to VLA post-training. 
+          Experiments show 5-17% success gains on public benchmarks and 24-30% gains on real robots across different VLA variants.
         </p>
       </section>
       <section class="prophet-section", id="prophet">
@@ -1255,7 +1249,7 @@
       
         <p>If you find our work helpful, please consider citing us:</p>
       
-        <pre><code>@article{zhang2025rein,
+        <pre><code>@article{zhang2025prophrl,
         title={Reinforcing Action Policies by Prophesying},
         author={Zhang, Jiahui and Huang, Ze and Gu, Chun and Ma, Zipei and Zhang, Li},
         year={2025},
