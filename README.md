@@ -27,7 +27,7 @@
 
 <img src="docs/resources/teaser.png" width="100%"/>
 <p align="justify" style="font-style: italic;">
-  <b>Our framework that uses a world model as a real-world–facing simulator to post-train VLA policies.</b>
+  <b>ProphRL uses a world model as a real-world–facing simulator to post-train VLA policies.</b>
     Our world model Prophet extends a video generator with history-aware mechanism and dual action conditioning, and is pretrained on large-scale robot trajectories to model action-to-video dynamics.
     The pretrained Prophet enables `prophesying' precise, physically plausible long-horizon rollouts, and can be rapidly adapted via few-shot fine-tuning to new environments, objects, and trajectories.
     Upon Prophet, we introduce the FA-GRPO with FlowScale RL algorithm to more stably and efficiently improve policies.
@@ -43,7 +43,7 @@
 If you find this project or dataset helpful, please consider citing our paper:
 
 ```bibtex
-@article{zhang2025vla,
+@article{zhang2025prophrl,
     title={Reinforcing Action Policies by Prophesying},
     author={Zhang, Jiahui and Huang, Ze and Gu, Chun and Ma, Zipei and Zhang, Li},
     year={2025},
