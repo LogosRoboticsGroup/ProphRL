@@ -22,7 +22,7 @@
 <div>
     <sup>1</sup>School of Data Science, Fudan University&emsp;
     <sup>2</sup>Shanghai Innovation Institute&emsp;
-    <sup>3</sup>Logos Robotic&emsp;
+    <sup>3</sup>Logos Robotics&emsp;
 </div>
 
 <img src="docs/resources/teaser.png" width="100%"/>
