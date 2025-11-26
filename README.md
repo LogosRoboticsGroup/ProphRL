@@ -3,7 +3,7 @@
 <h1>Reinforcing Action Policies by <i>Prophesying</i></h1>
 
 
-<a href="https://arxiv.org/abs/xxx" target="_blank">
+<a href="https://arxiv.org/abs/2511.20633" target="_blank">
     <img alt="arXiv" src="https://img.shields.io/badge/arXiv-PorphRL-red?logo=arxiv" height="20" />
 </a>
 <a href="https://LogosRoboticsGroup.github.io/ProphRL/" target="_blank">
