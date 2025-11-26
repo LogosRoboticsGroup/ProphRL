@@ -2714,11 +2714,10 @@ html {
 }
 
 /* ====== 移动端适配 ====== */
-
 @media (max-width: 768px) {
   .hero-header {
     height: 100vh;
-    padding: 72px 16px 24px;     /* 给上方按钮和刘海留空间 */
+    padding: 72px 16px 24px; 
   }
 
   .hero-top-links {
@@ -2729,18 +2728,13 @@ html {
 
   .hero-top-link {
     padding: 4px 8px;
-    font-size: 13px;            /* 字小一点，不挡画面 */
+    font-size: 13px;
     font-weight: 600;
   }
 
-  .hero-top-icon {
-    width: 16px;
-    height: 16px;
-  }
-
   .hero-main-title {
-    font-size: clamp(40px, 12vw, 64px);  /* 手机上缩小大标题 */
-    letter-spacing: 0.12em;
+    font-size: 14vw;     
+    letter-spacing: 0.08em; 
   }
 
   .hero-subtitle {
