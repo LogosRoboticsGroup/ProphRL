@@ -578,9 +578,10 @@ footer.small {
 
 /* ========= Generalization Table ========= */
 .scrollable-table {
-  overflow-x: auto;
   margin-top: 20px;
   border-radius: 10px;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .generalization-table {
@@ -1726,7 +1727,8 @@ footer.small {
 }
 
 .rl-table-block {
-  margin-top: 32px;
+  max-width: 960px;
+  margin: 0 auto 32px;
 }
 
 .rl-table-title {
@@ -1802,6 +1804,7 @@ footer.small {
   overflow: visible;
   box-shadow: 0 4px 12px rgba(0,0,0,0.04);
   table-layout: fixed;
+  min-width: 620px;
 }
 
 .rl-table thead {
@@ -1824,6 +1827,22 @@ footer.small {
 .rl-results-bullets li {
   margin-bottom: 4px;
 }
+
+@media (max-width: 768px) {
+  .rl-results-section {
+    padding-inline: 16px;
+  }
+
+  .rl-table {
+    font-size: 12px;
+  }
+
+  .rl-table th,
+  .rl-table td {
+    padding: 6px 8px;
+  }
+}
+
  /* ===== Reward model section ===== */
 
 .rm-section {
