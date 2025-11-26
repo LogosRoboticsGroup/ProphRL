@@ -47,6 +47,6 @@ If you find this project or dataset helpful, please consider citing our paper:
     title={Reinforcing Action Policies by Prophesying},
     author={Zhang, Jiahui and Huang, Ze and Gu, Chun and Ma, Zipei and Zhang, Li},
     year={2025},
-    journal={arXiv preprint arXiv:2506.22242xxxx},
+    journal={arXiv preprint arXiv:2511.20633},
 }
 ```
