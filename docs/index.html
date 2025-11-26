@@ -1704,10 +1704,13 @@
           });
 
           stopBtn.addEventListener("click", () => {
-            video.pause();
-            video.currentTime = 0;
-            video.style.display = "none";
-            cover.style.display = "";
+              video.pause();
+              video.currentTime = 0;
+              video.style.display = "none";
+              cover.style.display = "";
+
+              buttons.forEach((b) => b.classList.remove("active"));
+              currentStep = null;
           });
         });
         </script>
@@ -1728,7 +1731,6 @@
             let currentStep = null;
             video.playbackRate = 5;
 
-            // 选择 sub-task 按钮
             buttons.forEach((btn) => {
               btn.addEventListener("click", () => {
                 buttons.forEach((b) => b.classList.remove("active"));
@@ -1746,7 +1748,6 @@
               }
             }
 
-            // 播放
             generateBtn.addEventListener("click", () => {
               const src = getVideoSrc();
               if (!src) {
@@ -1769,6 +1770,9 @@
               video.currentTime = 0;
               video.style.display = "none";
               cover.style.display = "";
+
+              buttons.forEach((b) => b.classList.remove("active"));
+              currentStep = null;
             });
           });
         </script>
@@ -1781,7 +1785,6 @@
             const code = card.querySelector(".bibtex-code");
 
             btn.addEventListener("click", () => {
-              // 去掉 span，只复制纯文本
               const text = code.innerText.trim();
 
               if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1808,7 +1811,6 @@
             const generateBtns = root.querySelectorAll('[data-action="generate"]');
             const stopBtns = root.querySelectorAll('[data-action="stop"]');
 
-            // 当前选择的方向
             const state = {
               left: { first: null, second: null },
               right: { first: null, second: null },
@@ -1816,14 +1818,12 @@
 
             video.playbackRate = 5;
 
-            // 方向按钮选择
             buttons.forEach((btn) => {
               btn.addEventListener("click", () => {
                 const arm = btn.dataset.arm;   // left / right
                 const slot = btn.dataset.slot; // first / second
                 const dir = btn.dataset.dir;   // f / r / u / b / d / r
 
-                // 同一个 arm+slot 只允许一个 active
                 buttons.forEach((b) => {
                   if (b.dataset.arm === arm && b.dataset.slot === slot) {
                     b.classList.remove("active");
@@ -1856,10 +1856,8 @@
               video.play();
             }
 
-            // 两个 generate：一个左臂，一个右臂（没有总控制）
             generateBtns.forEach((btn, index) => {
               btn.addEventListener("click", () => {
-                // 优先用 data-target-arm，否则按顺序推断：第一个 left，第二个 right
                 const targetArm =
                   btn.dataset.targetArm || (index === 0 ? "left" : "right");
 
@@ -1872,7 +1870,6 @@
               });
             });
 
-            // Reset：停视频 + 回封面 + 清空所有选择
             stopBtns.forEach((btn) => {
               btn.addEventListener("click", () => {
                 // 停视频、回到封面
