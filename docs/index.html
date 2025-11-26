@@ -737,7 +737,6 @@
                   Right
                 </button>
 
-                <!-- 第 2 行：右臂第 2 步 b / d / r -->
                 <button
                   class="interact-btn"
                   data-arm="right"
@@ -765,9 +764,73 @@
               </div>
             </div>
 
-            <!-- 底部总的操作按钮（保留） -->
             <div class="interact-actions">
               <button class="interact-main-btn" data-action="generate">
+                Generate rollout
+              </button>
+              <button class="interact-secondary-btn" data-action="stop">
+                Reset
+              </button>
+            </div>
+
+            <div class="interact-group">
+              <div class="interact-group-title">Rotate both arms (roll / pitch / yaw)</div>
+
+              <div class="interact-grid-3x2">
+                <button
+                  class="interact-btn"
+                  data-arm="both"
+                  data-slot="first"
+                  data-dir="roll"
+                >
+                  Roll
+                </button>
+                <button
+                  class="interact-btn"
+                  data-arm="both"
+                  data-slot="first"
+                  data-dir="pitch"
+                >
+                  Pitch
+                </button>
+                <button
+                  class="interact-btn"
+                  data-arm="both"
+                  data-slot="first"
+                  data-dir="yaw"
+                >
+                  Yaw
+                </button>
+
+                <button
+                  class="interact-btn"
+                  data-arm="both"
+                  data-slot="second"
+                  data-dir="roll"
+                >
+                  Roll
+                </button>
+                <button
+                  class="interact-btn"
+                  data-arm="both"
+                  data-slot="second"
+                  data-dir="pitch"
+                >
+                  Pitch
+                </button>
+                <button
+                  class="interact-btn"
+                  data-arm="both"
+                  data-slot="second"
+                  data-dir="yaw"
+                >
+                  Yaw
+                </button>
+              </div>
+            </div>
+
+            <div class="interact-actions">
+              <button class="interact-main-btn" data-action="generate" data-target-arm="both">
                 Generate rollout
               </button>
               <button class="interact-secondary-btn" data-action="stop">
@@ -1811,33 +1874,43 @@
             const generateBtns = root.querySelectorAll('[data-action="generate"]');
             const stopBtns = root.querySelectorAll('[data-action="stop"]');
 
+            // 当前选择的方向：左臂 / 右臂 / 双臂旋转
             const state = {
               left: { first: null, second: null },
               right: { first: null, second: null },
+              both: { first: null, second: null }, // roll / pitch / yaw
             };
 
             video.playbackRate = 5;
 
+            // 按钮选择逻辑
             buttons.forEach((btn) => {
               btn.addEventListener("click", () => {
-                const arm = btn.dataset.arm;   // left / right
+                const arm = btn.dataset.arm;   // left / right / both
                 const slot = btn.dataset.slot; // first / second
-                const dir = btn.dataset.dir;   // f / r / u / b / d / r
+                const dir = btn.dataset.dir;   // f/r/u/b/d/r 或 roll/pitch/yaw
 
+                if (!arm || !slot) return;
+
+                // 同一个 arm+slot 只允许一个 active
                 buttons.forEach((b) => {
                   if (b.dataset.arm === arm && b.dataset.slot === slot) {
                     b.classList.remove("active");
                   }
                 });
                 btn.classList.add("active");
-                state[arm][slot] = dir;
+
+                // 记录当前选择
+                if (state[arm]) {
+                  state[arm][slot] = dir;
+                }
               });
             });
 
             function getFolderForArm(arm) {
               const s = state[arm];
-              if (!s.first || !s.second) return null;
-              return `${arm}_${s.first}_${s.second}`; // e.g. left_f_r
+              if (!s || !s.first || !s.second) return null;
+              return `${arm}_${s.first}_${s.second}`;
             }
 
             function getVideoSrcForArm(arm) {
@@ -1856,20 +1929,27 @@
               video.play();
             }
 
+            // generate 按钮：根据 data-target-arm 播放对应视频
             generateBtns.forEach((btn, index) => {
               btn.addEventListener("click", () => {
+                // 优先使用 data-target-arm；没有的话按顺序 fallback：第一个 left，第二个 right
                 const targetArm =
                   btn.dataset.targetArm || (index === 0 ? "left" : "right");
 
                 const src = getVideoSrcForArm(targetArm);
                 if (!src) {
-                  alert(`Please choose both moves for the ${targetArm} arm first.`);
+                  alert(
+                    `Please choose both moves for the ${targetArm} ${
+                      targetArm === "both" ? "rotation" : "arm"
+                    } first.`
+                  );
                   return;
                 }
                 playVideo(src);
               });
             });
 
+            // Reset：停视频 + 封面 + 清空所有状态
             stopBtns.forEach((btn) => {
               btn.addEventListener("click", () => {
                 // 停视频、回到封面
@@ -1886,6 +1966,8 @@
                 state.left.second = null;
                 state.right.first = null;
                 state.right.second = null;
+                state.both.first = null;
+                state.both.second = null;
               });
             });
           });
