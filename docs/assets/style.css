@@ -2742,3 +2742,8 @@ html {
     line-height: 1.4;
   }
 }
+.interact-grid-3x2 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
