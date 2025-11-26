@@ -2867,3 +2867,39 @@ html {
   height: auto !important;
   display: block;
 }
+.summary-section {
+  padding: 56px 0 32px;
+}
+
+.summary-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.summary-card {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px 32px;
+  border-radius: 20px;
+  background: #f7f9fc;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.07);
+  line-height: 1.7;
+  font-size: 16px;
+  color: #111827;
+}
+
+.summary-card p + p {
+  margin-top: 12px;
+}
+
+.summary-key {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.summary-metric {
+  font-weight: 700;
+  color: #7c3aed;
+}
