@@ -2639,6 +2639,8 @@ html {
   }
 }
 /* hero 本身保持 relative，方便右上角绝对定位 */
+/* ====== 通用（桌面优先） ====== */
+
 .hero-header {
   position: relative;
   height: 100vh;
@@ -2657,37 +2659,44 @@ html {
   top: 18px;
   right: 24px;
   display: flex;
-  gap: 10px;
+  gap: 22px;
   z-index: 10;
 }
 
-/* 按钮本体：默认白底灰字，hover 变蓝底白字 */
+/* 右上角链接：默认透明，hover 出蓝色矩形 */
 .hero-top-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 14px;
+  border-radius: 4px;
+  background: transparent;
+  border: none;
+
+  color: #ffffff;
   font-family: "Bai Jamjuree", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #111827;
+  font-size: 18px;
+  font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+
   transition:
     background 0.15s ease,
-    color 0.15s ease,
-    box-shadow 0.15s ease,
-    transform 0.15s ease;
+    color 0.15s ease;
 }
 
 .hero-top-link:hover {
-  background: #2563eb;          /* 悬停变蓝 */
-  color: #ffffff;               /* 文字变白 */
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.22);
-  transform: translateY(-1px);
+  background: #2563eb;
+  color: #ffffff;
 }
 
-/* 你原来的大标题 / 副标题可以继续用之前那套 */
+.hero-top-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 中间大标题 / 副标题 */
 .hero-main-title {
   font-size: clamp(80px, 15vw, 150px);
   line-height: 1;
@@ -2703,166 +2712,39 @@ html {
   margin: 0;
   opacity: 0.96;
 }
-/* 右上角容器保持不变 */
-.hero-top-links {
-  position: absolute;
-  top: 18px;
-  right: 24px;
-  display: flex;
-  gap: 18px;
-  z-index: 10;
-}
 
-/* 链接：默认透明背景，只显示白色文字 + 图标 */
-.hero-top-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 10px;                 /* 用来给 hover 的蓝色方块留一点内边距 */
-  border-radius: 6px;
-  background: transparent;           /* 默认透明 */
-  color: #ffffff;
-  font-family: "Bai Jamjuree", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  text-decoration: none;
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
-}
+/* ====== 移动端适配 ====== */
 
-/* 图标白色、固定大小 */
-.hero-top-icon {
-  width: 18px;
-  height: 18px;
-  display: block;
-}
+@media (max-width: 768px) {
+  .hero-header {
+    height: 100vh;
+    padding: 72px 16px 24px;     /* 给上方按钮和刘海留空间 */
+  }
 
-/* hover 的时候才出现蓝色矩形背景 */
-.hero-top-link:hover {
-  background: rgba(37, 99, 235, 0.95);  /* 蓝色方块 */
-  color: #ffffff;
-}
-.hero-top-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border-radius: 10px;
+  .hero-top-links {
+    top: 12px;
+    right: 12px;
+    gap: 10px;
+  }
 
-  /* 底色稍微深一点，和背景拉开 */
-  background: rgba(80, 90, 255, 0.22);
+  .hero-top-link {
+    padding: 4px 8px;
+    font-size: 13px;            /* 字小一点，不挡画面 */
+    font-weight: 600;
+  }
 
-  /* 加一圈线条，让形状更清晰 */
-  border: 1px solid rgba(255, 255, 255, 0.85);
+  .hero-top-icon {
+    width: 16px;
+    height: 16px;
+  }
 
-  color: #ffffff;
-  font-family: "Bai Jamjuree", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  text-decoration: none;
+  .hero-main-title {
+    font-size: clamp(40px, 12vw, 64px);  /* 手机上缩小大标题 */
+    letter-spacing: 0.12em;
+  }
 
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.18);
-  transition:
-    background 0.15s ease,
-    border-color 0.15s ease,
-    box-shadow 0.15s ease,
-    transform 0.15s ease;
-}
-
-.hero-top-link:hover {
-  background: #2563eb;                  /* 悬停时变成实心蓝块 */
-  border-color: #2563eb;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.26);
-  transform: translateY(-1px);
-}
-.hero-top-links {
-  position: absolute;
-  top: 18px;
-  right: 24px;
-  display: flex;
-  gap: 20px;
-  z-index: 10;
-}
-
-/* 扁平文字按钮：无背景、无阴影、无边框 */
-.hero-top-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 2px;   /* 只保留一点点点击区域 */
-  border-radius: 4px;
-  border: none;
-  background: transparent;
-  box-shadow: none;
-
-  color: #ffffff;
-  font-family: "Bai Jamjuree", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  text-decoration: none;
-
-  transition:
-    background 0.12s ease,
-    text-decoration-color 0.12s ease;
-}
-
-/* 图标如果有的话 */
-.hero-top-icon {
-  width: 18px;
-  height: 18px;
-}
-
-/* hover 只加一层很淡的白色底和下划线，不突兀 */
-.hero-top-link:hover {
-  background: rgba(255, 255, 255, 0.12);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-/* 右上角容器 */
-.hero-top-links {
-  position: absolute;
-  top: 18px;
-  right: 24px;
-  display: flex;
-  gap: 22px;
-  z-index: 10;
-}
-
-/* 链接本体：大一点、加粗、默认透明背景 */
-.hero-top-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 8px 14px;            /* 这个决定蓝色块的大小 */
-  border-radius: 4px;
-  background: transparent;      /* 默认透明 */
-  border: none;
-
-  color: #ffffff;
-  font-family: "Bai Jamjuree", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 20px;              /* 字体更大 */
-  font-weight: 700;             /* 加粗 */
-  text-decoration: none;
-
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
-}
-
-/* 图标大小（如果有） */
-.hero-top-icon {
-  width: 20px;
-  height: 20px;
-}
-
-/* hover 时出现实心蓝色矩形 */
-.hero-top-link:hover {
-  background: #2563eb;          /* 实心蓝块 */
-  color: #ffffff;               /* 文字保持白色 */
+  .hero-subtitle {
+    font-size: 16px;
+    line-height: 1.4;
+  }
 }
