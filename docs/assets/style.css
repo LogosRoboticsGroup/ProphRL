@@ -2638,8 +2638,6 @@ html {
     font-size: 13px;
   }
 }
-/* hero 本身保持 relative，方便右上角绝对定位 */
-/* ====== 通用（桌面优先） ====== */
 
 .hero-header {
   position: relative;
@@ -2653,17 +2651,15 @@ html {
   overflow: hidden;
 }
 
-/* 右上角链接容器 */
 .hero-top-links {
   position: absolute;
   top: 18px;
-  right: 24px;
+  right: 74px;
   display: flex;
   gap: 22px;
   z-index: 10;
 }
 
-/* 右上角链接：默认透明，hover 出蓝色矩形 */
 .hero-top-link {
   display: inline-flex;
   align-items: center;
@@ -2696,7 +2692,6 @@ html {
   height: 20px;
 }
 
-/* 中间大标题 / 副标题 */
 .hero-main-title {
   font-size: clamp(80px, 15vw, 150px);
   line-height: 1;
@@ -2713,7 +2708,6 @@ html {
   opacity: 0.96;
 }
 
-/* ====== 移动端适配 ====== */
 @media (max-width: 768px) {
   .hero-header {
     height: 100vh;
@@ -2762,7 +2756,6 @@ html {
   margin-bottom: 16px;
 }
 
-/* 外层卡片 */
 .bibtex-card {
   position: relative;
   padding: 24px 28px;
@@ -2772,7 +2765,6 @@ html {
   overflow-x: auto;
 }
 
-/* 复制按钮 */
 .bibtex-copy-btn {
   position: absolute;
   top: 14px;
@@ -2793,7 +2785,6 @@ html {
   color: #0f172a;
 }
 
-/* 代码块本身 */
 .bibtex-pre {
   margin: 0;
   font-size: 14px;
@@ -2808,28 +2799,27 @@ html {
   display: block;
 }
 
-/* 简单语法高亮 */
 .hl-key {
-  color: #dc2626;      /* @article */
+  color: #dc2626;
   font-weight: 500;
 }
 
 .hl-id {
-  color: #1d4ed8;      /* {zhang2025prophrl} */
+  color: #1d4ed8;
 }
 
 .hl-field {
-  color: #2563eb;      /* title, author, year... */
+  color: #2563eb;
 }
 
 .hl-op {
-  color: #0f172a;      /* = 和逗号附近 */
+  color: #0f172a;
 }
 
 .hl-string {
-  color: #1e3a8a;      /* 字符串内容 */
+  color: #1e3a8a;
 }
 
 .hl-number {
-  color: #b45309;      /* 2025 这种数字 */
+  color: #b45309;
 }
