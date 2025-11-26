@@ -2866,12 +2866,12 @@ html {
 }
 #interactive-demo-bridge .interact-group {
   display: flex;
-  flex-direction: column;  /* 纵向排布：标题在上，按钮在下 */
-  align-items: center;     /* 水平居中整个 2x3 按钮块 */
+  flex-direction: column;
+  align-items: center;
 }
 
 #interactive-demo-bridge .interact-group-title {
-  margin-bottom: 8px;      /* 标题和按钮之间留一点间距 */
+  margin-bottom: 8px;
 }
 
 #interactive-demo-cm .interact-video-wrapper {
@@ -2880,7 +2880,7 @@ html {
   margin: 0 auto 16px;
   border-radius: 24px;
   overflow: hidden;
-
+  
   height: auto !important; 
   background: transparent !important;
 }
@@ -2895,7 +2895,29 @@ html {
   height: auto !important;
   display: block;
 }
+#interactive-demo-cm .interact-group {
+  display: flex;
+  justify-content: center; 
+  gap: 12px;
+  margin-bottom: 4px;
+  flex-direction: column;
+  align-items: center;
+  
+}
 
+#interactive-demo-cm .interact-group-title {
+  text-align: center;
+}
+.interact-grid-4x2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 14px;
+  justify-items: center;
+}
+
+#interactive-demo-cm .interact-group {
+  text-align: center;
+}
 #interactive-demo-2arm .interact-video-wrapper {
   max-width: 320px;
   max-height: 240px;
@@ -2919,12 +2941,12 @@ html {
 }
 #interactive-demo-2arm .interact-group {
   display: flex;
-  flex-direction: column;  /* 纵向排布：标题在上，按钮在下 */
-  align-items: center;     /* 水平居中整个 2x3 按钮块 */
+  flex-direction: column;
+  align-items: center;
 }
 
 #interactive-demo-2arm .interact-group-title {
-  margin-bottom: 8px;      /* 标题和按钮之间留一点间距 */
+  margin-bottom: 8px;
 }
 .summary-section {
   padding: 56px 0 32px;

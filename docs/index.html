@@ -500,14 +500,6 @@
       </section> -->
       <section class="interactive-section" id="interactive-demo-cm">
         <h3 class="wm-section-title">Interactive Demo: 3-step precise control</h3>
-        <!-- <ol class="interactive-bullets">
-          <li>Pick the <strong>First move</strong> (forward / right).</li>
-          <li>Pick the <strong>Second move</strong> (forward / stay).</li>
-          <li>Pick the <strong>Third move</strong> (left / right).</li>
-          <li>Pick the <strong>Distance</strong> (10 cm / 20 cm).</li>
-          <li>Click <strong>Generate rollout</strong> to play the rollout.</li>
-          <li>Click <strong>Reset</strong> to return to the initial frame.</li>
-        </ol> -->
 
         <div
           class="interactive-demo"
@@ -523,57 +515,49 @@
             <video class="interact-video" muted playsinline preload="auto"></video>
           </div>
 
-          <div class="interact-controls">
-            <div class="interact-group">
-              <div class="interact-group-title">First move</div>
+        <div class="interact-controls">
+          <div class="interact-group">
+            <div class="interact-group-title">Choose a control sequence</div>
+
+            <div class="interact-grid-4x2">
+              <!-- 第 1 行：step1 & step2 -->
               <button class="interact-btn" data-group="step1" data-value="forward">
                 Forward
               </button>
               <button class="interact-btn" data-group="step1" data-value="right">
                 Right
               </button>
-            </div>
-
-            <div class="interact-group">
-              <!-- <div class="interact-group-title">Second move</div> -->
               <button class="interact-btn" data-group="step2" data-value="forward">
                 Forward
               </button>
               <button class="interact-btn" data-group="step2" data-value="stay">
                 Stay
               </button>
-            </div>
 
-            <div class="interact-group">
-              <!-- <div class="interact-group-title">Third move</div> -->
               <button class="interact-btn" data-group="step3" data-value="left">
                 Left
               </button>
               <button class="interact-btn" data-group="step3" data-value="right">
                 Right
               </button>
-            </div>
-
-            <div class="interact-group">
-              <!-- <div class="interact-group-title">Distance</div> -->
               <button class="interact-btn" data-group="dist" data-value="10">
                 10&nbsp;cm
               </button>
               <button class="interact-btn" data-group="dist" data-value="20">
                 20&nbsp;cm
               </button>
-              
-            </div>
-
-            <div class="interact-actions">
-              <button class="interact-main-btn" data-action="generate">
-                Generate rollout
-              </button>
-              <button class="interact-secondary-btn" data-action="stop">
-                Reset
-              </button>
             </div>
           </div>
+
+          <div class="interact-actions">
+            <button class="interact-main-btn" data-action="generate">
+              Generate rollout
+            </button>
+            <button class="interact-secondary-btn" data-action="stop">
+              Reset
+            </button>
+          </div>
+        </div>
         </div>
       </section>
 
@@ -651,9 +635,7 @@
             <video class="interact-video" muted playsinline preload="auto"></video>
           </div>
 
-          <!-- 控制区域 -->
           <div class="interact-controls">
-            <!-- 只控制左臂 -->
             <div class="interact-group">
               <div class="interact-group-title">Control the left arm only</div>
               <div class="interact-grid-3x2">
@@ -682,7 +664,6 @@
                   Up
                 </button>
 
-                <!-- 第 2 行：左臂第 2 步 f / r / u -->
                 <button
                   class="interact-btn"
                   data-arm="left"
@@ -709,7 +690,6 @@
                 </button>
               </div>
 
-              <!-- 左臂单独的 generate/reset -->
 
             </div>
               <div class="interact-actions">
@@ -728,12 +708,10 @@
                   Reset
                 </button>
               </div>
-            <!-- 只控制右臂 -->
             <div class="interact-group">
               <div class="interact-group-title">Control the right arm only</div>
 
               <div class="interact-grid-3x2">
-                <!-- 第 1 行：右臂第 1 步 b / d / r -->
                 <button
                   class="interact-btn"
                   data-arm="right"
