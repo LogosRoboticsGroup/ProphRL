@@ -2864,6 +2864,15 @@ html {
   height: auto !important;
   display: block;
 }
+#interactive-demo-bridge .interact-group {
+  display: flex;
+  flex-direction: column;  /* 纵向排布：标题在上，按钮在下 */
+  align-items: center;     /* 水平居中整个 2x3 按钮块 */
+}
+
+#interactive-demo-bridge .interact-group-title {
+  margin-bottom: 8px;      /* 标题和按钮之间留一点间距 */
+}
 
 #interactive-demo-cm .interact-video-wrapper {
   max-width: 320px;
@@ -2885,6 +2894,37 @@ html {
   width: 100%;
   height: auto !important;
   display: block;
+}
+
+#interactive-demo-2arm .interact-video-wrapper {
+  max-width: 320px;
+  max-height: 240px;
+  margin: 0 auto 16px;
+  border-radius: 24px;
+  overflow: hidden;
+
+  height: auto !important; 
+  background: transparent !important;
+}
+#interactive-demo-2arm .interactive-demo {
+  max-width: 420px;
+  width: 100%; 
+  margin: 0 auto; 
+}
+#interactive-demo-2arm .interact-video,
+#interactive-demo-2arm .interact-cover {
+  width: 100%;
+  height: auto !important;
+  display: block;
+}
+#interactive-demo-2arm .interact-group {
+  display: flex;
+  flex-direction: column;  /* 纵向排布：标题在上，按钮在下 */
+  align-items: center;     /* 水平居中整个 2x3 按钮块 */
+}
+
+#interactive-demo-2arm .interact-group-title {
+  margin-bottom: 8px;      /* 标题和按钮之间留一点间距 */
 }
 .summary-section {
   padding: 56px 0 32px;

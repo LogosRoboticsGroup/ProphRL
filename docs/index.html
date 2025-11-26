@@ -535,7 +535,7 @@
             </div>
 
             <div class="interact-group">
-              <div class="interact-group-title">Second move</div>
+              <!-- <div class="interact-group-title">Second move</div> -->
               <button class="interact-btn" data-group="step2" data-value="forward">
                 Forward
               </button>
@@ -545,7 +545,7 @@
             </div>
 
             <div class="interact-group">
-              <div class="interact-group-title">Third move</div>
+              <!-- <div class="interact-group-title">Third move</div> -->
               <button class="interact-btn" data-group="step3" data-value="left">
                 Left
               </button>
@@ -555,7 +555,7 @@
             </div>
 
             <div class="interact-group">
-              <div class="interact-group-title">Distance</div>
+              <!-- <div class="interact-group-title">Distance</div> -->
               <button class="interact-btn" data-group="dist" data-value="10">
                 10&nbsp;cm
               </button>
@@ -621,6 +621,173 @@
               </div>
             </div>
 
+            <div class="interact-actions">
+              <button class="interact-main-btn" data-action="generate">
+                Generate rollout
+              </button>
+              <button class="interact-secondary-btn" data-action="stop">
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="interactive-section" id="interactive-demo-2arm">
+        <h3 class="wm-section-title">Interactive Demo: 2-step dual-arm control</h3>
+
+        <div
+          class="interactive-demo"
+          data-base-path="assets/videos/interact_demo/demo-2arm-control"
+          data-cover-frame="assets/videos/interact_demo/demo-2arm-control/cover_frame.png"
+        >
+          <!-- 视频区域 -->
+          <div class="interact-video-wrapper">
+            <img
+              class="interact-cover"
+              src="assets/videos/interact_demo/demo-2arm-control/cover_frame.png"
+              alt="Initial frame"
+            />
+            <video class="interact-video" muted playsinline preload="auto"></video>
+          </div>
+
+          <!-- 控制区域 -->
+          <div class="interact-controls">
+            <!-- 只控制左臂 -->
+            <div class="interact-group">
+              <div class="interact-group-title">Control the left arm only</div>
+              <div class="interact-grid-3x2">
+                <button
+                  class="interact-btn"
+                  data-arm="left"
+                  data-slot="first"
+                  data-dir="f"
+                >
+                  Forward
+                </button>
+                <button
+                  class="interact-btn"
+                  data-arm="left"
+                  data-slot="first"
+                  data-dir="r"
+                >
+                  Right
+                </button>
+                <button
+                  class="interact-btn"
+                  data-arm="left"
+                  data-slot="first"
+                  data-dir="u"
+                >
+                  Up
+                </button>
+
+                <!-- 第 2 行：左臂第 2 步 f / r / u -->
+                <button
+                  class="interact-btn"
+                  data-arm="left"
+                  data-slot="second"
+                  data-dir="f"
+                >
+                  Forward
+                </button>
+                <button
+                  class="interact-btn"
+                  data-arm="left"
+                  data-slot="second"
+                  data-dir="r"
+                >
+                  Right
+                </button>
+                <button
+                  class="interact-btn"
+                  data-arm="left"
+                  data-slot="second"
+                  data-dir="u"
+                >
+                  Up
+                </button>
+              </div>
+
+              <!-- 左臂单独的 generate/reset -->
+
+            </div>
+              <div class="interact-actions">
+                <button
+                  class="interact-main-btn"
+                  data-action="generate"
+                  data-target-arm="left"
+                >
+                  Generate rollout
+                </button>
+                <button
+                  class="interact-secondary-btn"
+                  data-action="stop"
+                  data-target-arm="left"
+                >
+                  Reset
+                </button>
+              </div>
+            <!-- 只控制右臂 -->
+            <div class="interact-group">
+              <div class="interact-group-title">Control the right arm only</div>
+
+              <div class="interact-grid-3x2">
+                <!-- 第 1 行：右臂第 1 步 b / d / r -->
+                <button
+                  class="interact-btn"
+                  data-arm="right"
+                  data-slot="first"
+                  data-dir="b"
+                >
+                  Back
+                </button>
+                <button
+                  class="interact-btn"
+                  data-arm="right"
+                  data-slot="first"
+                  data-dir="d"
+                >
+                  Down
+                </button>
+                <button
+                  class="interact-btn"
+                  data-arm="right"
+                  data-slot="first"
+                  data-dir="r"
+                >
+                  Right
+                </button>
+
+                <!-- 第 2 行：右臂第 2 步 b / d / r -->
+                <button
+                  class="interact-btn"
+                  data-arm="right"
+                  data-slot="second"
+                  data-dir="b"
+                >
+                  Back
+                </button>
+                <button
+                  class="interact-btn"
+                  data-arm="right"
+                  data-slot="second"
+                  data-dir="d"
+                >
+                  Down
+                </button>
+                <button
+                  class="interact-btn"
+                  data-arm="right"
+                  data-slot="second"
+                  data-dir="r"
+                >
+                  Right
+                </button>
+              </div>
+            </div>
+
+            <!-- 底部总的操作按钮（保留） -->
             <div class="interact-actions">
               <button class="interact-main-btn" data-action="generate">
                 Generate rollout
@@ -1646,6 +1813,105 @@
                   setTimeout(() => (btn.textContent = old), 1200);
                 });
               }
+            });
+          });
+        </script>
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const root = document.querySelector(
+              "#interactive-demo-2arm .interactive-demo"
+            );
+            if (!root) return;
+
+            const basePath = root.dataset.basePath;
+            const video = root.querySelector(".interact-video");
+            const cover = root.querySelector(".interact-cover");
+            const buttons = root.querySelectorAll(".interact-btn");
+            const generateBtns = root.querySelectorAll('[data-action="generate"]');
+            const stopBtns = root.querySelectorAll('[data-action="stop"]');
+
+            // 当前选择的方向
+            const state = {
+              left: { first: null, second: null },
+              right: { first: null, second: null },
+            };
+
+            video.playbackRate = 5;
+
+            // 方向按钮选择
+            buttons.forEach((btn) => {
+              btn.addEventListener("click", () => {
+                const arm = btn.dataset.arm;   // left / right
+                const slot = btn.dataset.slot; // first / second
+                const dir = btn.dataset.dir;   // f / r / u / b / d / r
+
+                // 同一个 arm+slot 只允许一个 active
+                buttons.forEach((b) => {
+                  if (b.dataset.arm === arm && b.dataset.slot === slot) {
+                    b.classList.remove("active");
+                  }
+                });
+                btn.classList.add("active");
+                state[arm][slot] = dir;
+              });
+            });
+
+            function getFolderForArm(arm) {
+              const s = state[arm];
+              if (!s.first || !s.second) return null;
+              return `${arm}_${s.first}_${s.second}`; // e.g. left_f_r
+            }
+
+            function getVideoSrcForArm(arm) {
+              const folder = getFolderForArm(arm);
+              if (!folder) return null;
+              return `${basePath}/${folder}/merged.mp4`;
+            }
+
+            function playVideo(src) {
+              if (video.src !== src) {
+                video.src = src;
+              }
+              cover.style.display = "none";
+              video.style.display = "block";
+              video.currentTime = 0;
+              video.play();
+            }
+
+            // 两个 generate：一个左臂，一个右臂（没有总控制）
+            generateBtns.forEach((btn, index) => {
+              btn.addEventListener("click", () => {
+                // 优先用 data-target-arm，否则按顺序推断：第一个 left，第二个 right
+                const targetArm =
+                  btn.dataset.targetArm || (index === 0 ? "left" : "right");
+
+                const src = getVideoSrcForArm(targetArm);
+                if (!src) {
+                  alert(`Please choose both moves for the ${targetArm} arm first.`);
+                  return;
+                }
+                playVideo(src);
+              });
+            });
+
+            // Reset：停视频 + 回封面 + 清空所有选择
+            stopBtns.forEach((btn) => {
+              btn.addEventListener("click", () => {
+                // 停视频、回到封面
+                video.pause();
+                video.currentTime = 0;
+                video.style.display = "none";
+                cover.style.display = "";
+
+                // 清空按钮 active
+                buttons.forEach((b) => b.classList.remove("active"));
+
+                // 清空 state
+                state.left.first = null;
+                state.left.second = null;
+                state.right.first = null;
+                state.right.second = null;
+              });
             });
           });
         </script>
