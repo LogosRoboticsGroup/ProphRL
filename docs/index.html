@@ -567,6 +567,62 @@
         </div>
       </section>
 
+      <section class="interactive-section" id="interactive-demo-bridge">
+        <h3 class="wm-section-title">Interactive Demo: BRIDGE multi task</h3>
+
+        <div
+          class="interactive-demo"
+          data-base-path="assets/videos/interact_demo/demo-bridge-task"
+          data-cover-frame="assets/videos/interact_demo/demo-bridge-task/cover_frame.png"
+        >
+          <div class="interact-video-wrapper">
+            <img
+              class="interact-cover"
+              src="assets/videos/interact_demo/demo-bridge-task/cover_frame.png"
+              alt="Initial frame"
+            />
+            <video class="interact-video" muted playsinline preload="auto"></video>
+          </div>
+
+          <div class="interact-controls">
+            <div class="interact-group">
+              <div class="interact-group-title">Choose a sub-task</div>
+              <div class="interact-grid-3x2">
+                <!-- 上排 -->
+                <button class="interact-btn" data-step="move_the_bowl">
+                  Move the bowl
+                </button>
+                <button class="interact-btn" data-step="pickup_the_carrot">
+                  Pick up the carrot
+                </button>
+                <button class="interact-btn" data-step="pickup_the_spoon">
+                  Pick up the spoon
+                </button>
+                <!-- 下排 -->
+                <button class="interact-btn" data-step="put_the_carrot_into_bowl">
+                  Put carrot into bowl
+                </button>
+                <button class="interact-btn" data-step="sweep_the_cloth">
+                  Sweep the cloth
+                </button>
+                <button class="interact-btn" data-step="cover_spoon_with_the_cloth">
+                  Cover spoon with the cloth
+                </button>
+              </div>
+            </div>
+
+            <div class="interact-actions">
+              <button class="interact-main-btn" data-action="generate">
+                Generate rollout
+              </button>
+              <button class="interact-secondary-btn" data-action="stop">
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="wm-edit-section" id="wm-edit">
         <h3 class="wm-section-title">Action Editing with Prophet</h3>
         <!-- <p class="wm-section-subtitle">
@@ -1480,7 +1536,67 @@
           });
         });
         </script>
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const root = document.querySelector(
+              "#interactive-demo-bridge .interactive-demo"
+            );
+            if (!root) return;
 
+            const basePath = root.dataset.basePath;
+            const video = root.querySelector(".interact-video");
+            const cover = root.querySelector(".interact-cover");
+            const buttons = root.querySelectorAll(".interact-btn");
+            const generateBtn = root.querySelector('[data-action="generate"]');
+            const stopBtn = root.querySelector('[data-action="stop"]');
+
+            let currentStep = null;
+            video.playbackRate = 5;
+
+            // 选择 sub-task 按钮
+            buttons.forEach((btn) => {
+              btn.addEventListener("click", () => {
+                buttons.forEach((b) => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentStep = btn.dataset.step;
+              });
+            });
+
+            function getVideoSrc() {
+              if (!currentStep) return null;
+              if (currentStep === "full_task") {
+                return `${basePath}/merged.mp4`;
+              } else {
+                return `${basePath}/${currentStep}/merged.mp4`;
+              }
+            }
+
+            // 播放
+            generateBtn.addEventListener("click", () => {
+              const src = getVideoSrc();
+              if (!src) {
+                alert("Please choose a sub-task first.");
+                return;
+              }
+
+              if (video.src !== src) {
+                video.src = src;
+              }
+              cover.style.display = "none";
+              video.style.display = "block";
+              video.currentTime = 0;
+              video.play();
+            });
+
+            // Reset
+            stopBtn.addEventListener("click", () => {
+              video.pause();
+              video.currentTime = 0;
+              video.style.display = "none";
+              cover.style.display = "";
+            });
+          });
+        </script>
 
         </div>
 </body>
