@@ -2984,3 +2984,25 @@ html {
   font-weight: 700;
   color: #7c3aed;
 }
+
+#interactive-demo-cm .interact-hint {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #6b7280;
+  text-align: center;
+}
+#interactive-demo-bridge .interact-hint {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #6b7280;
+  text-align: center;
+}
+#interactive-demo-2arm .interact-hint {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #6b7280;
+  text-align: center;
+}
