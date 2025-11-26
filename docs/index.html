@@ -1296,7 +1296,7 @@
           </div>
         </section>
 
-      <section class="citation-section", id="citation">
+      <!-- <section class="citation-section", id="citation">
         <h2 class="section-title">Bibtex</h2>
       
         <p>If you find our work helpful, please consider citing us:</p>
@@ -1307,6 +1307,26 @@
         year={2025},
         journal={arXiv preprint arXiv:2511.20633},
         }</code></pre>
+      </section> -->
+      <section class="citation-section" id="citation">
+        <h2 class="section-title">Bibtex</h2>
+
+        <p>If you find this project or dataset helpful, please consider citing our paper:</p>
+
+        <div class="bibtex-card">
+          <button class="bibtex-copy-btn" type="button" aria-label="Copy BibTeX">
+            ⧉
+          </button>
+
+      <pre class="bibtex-pre"><code class="bibtex-code">
+      <span class="hl-key">@article</span><span class="hl-id">{zhang2025prophrl},</span>
+        <span class="hl-field">title</span><span class="hl-op">=</span>{<span class="hl-string">Reinforcing Action Policies by Prophesying</span>},
+        <span class="hl-field">author</span><span class="hl-op">=</span>{<span class="hl-string">Zhang, Jiahui and Huang, Ze and Gu, Chun and Ma, Zipei and Zhang, Li</span>},
+        <span class="hl-field">year</span><span class="hl-op">=</span>{<span class="hl-number">2025</span>},
+        <span class="hl-field">journal</span><span class="hl-op">=</span>{<span class="hl-string">arXiv preprint arXiv:2511.20633</span>},
+      }
+      </code></pre>
+        </div>
       </section>
         
         <script>
@@ -1594,6 +1614,28 @@
               video.currentTime = 0;
               video.style.display = "none";
               cover.style.display = "";
+            });
+          });
+        </script>
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const card = document.querySelector(".bibtex-card");
+            if (!card) return;
+
+            const btn = card.querySelector(".bibtex-copy-btn");
+            const code = card.querySelector(".bibtex-code");
+
+            btn.addEventListener("click", () => {
+              // 去掉 span，只复制纯文本
+              const text = code.innerText.trim();
+
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                  const old = btn.textContent;
+                  btn.textContent = "✓";
+                  setTimeout(() => (btn.textContent = old), 1200);
+                });
+              }
             });
           });
         </script>

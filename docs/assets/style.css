@@ -2747,3 +2747,89 @@ html {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
 }
+
+.citation-section {
+  margin-top: 60px;
+}
+
+.citation-section .section-title {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.citation-section p {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+/* 外层卡片 */
+.bibtex-card {
+  position: relative;
+  padding: 24px 28px;
+  border-radius: 18px;
+  background: #f7f9fc;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  overflow-x: auto;
+}
+
+/* 复制按钮 */
+.bibtex-copy-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  color: #64748b;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.bibtex-copy-btn:hover {
+  background: rgba(148, 163, 184, 0.16);
+  color: #0f172a;
+}
+
+/* 代码块本身 */
+.bibtex-pre {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  color: #0f172a;
+  white-space: pre;
+}
+
+.bibtex-code {
+  display: block;
+}
+
+/* 简单语法高亮 */
+.hl-key {
+  color: #dc2626;      /* @article */
+  font-weight: 500;
+}
+
+.hl-id {
+  color: #1d4ed8;      /* {zhang2025prophrl} */
+}
+
+.hl-field {
+  color: #2563eb;      /* title, author, year... */
+}
+
+.hl-op {
+  color: #0f172a;      /* = 和逗号附近 */
+}
+
+.hl-string {
+  color: #1e3a8a;      /* 字符串内容 */
+}
+
+.hl-number {
+  color: #b45309;      /* 2025 这种数字 */
+}
